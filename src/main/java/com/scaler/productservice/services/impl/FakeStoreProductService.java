@@ -1,9 +1,9 @@
 package com.scaler.productservice.services.impl;
 
 import com.scaler.productservice.dtos.FakeStoreProductDTO;
+import com.scaler.productservice.entity.Category;
+import com.scaler.productservice.entity.Product;
 import com.scaler.productservice.exceptions.ProductNotFoundException;
-import com.scaler.productservice.models.Category;
-import com.scaler.productservice.models.Product;
 import com.scaler.productservice.services.IProductService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -38,7 +38,7 @@ public class FakeStoreProductService implements IProductService {
     }
 
     @Override
-    public Product getSingleProduct(long id) throws ProductNotFoundException {
+    public Product getProduct(long id) throws ProductNotFoundException {
         if(id > 20){
             throw new ProductNotFoundException("Product with id: "+id+" Not Found Exception");
         }
@@ -67,6 +67,26 @@ public class FakeStoreProductService implements IProductService {
         return productList;
     }
 
+    @Override
+    public Product addNewProduct(Product product) {
+        return null;
+    }
+
+    @Override
+    public Product updateExistingProduct(Long id, Product product) {
+        return null;
+    }
+
+    @Override
+    public Product replaceExistingProduct(Long id, Product product) {
+        return null;
+    }
+
+    @Override
+    public Product deleteProduct(Long id) {
+        return null;
+    }
+
     public List<Product> getAllProductsUsingRestTemplate() {
         List<Product> productList = new ArrayList<>();
         ResponseEntity<List<FakeStoreProductDTO>> response = restTemplate.exchange(
@@ -82,14 +102,7 @@ public class FakeStoreProductService implements IProductService {
     }
 
     private Product convert(FakeStoreProductDTO fsProduct) {
-        return new Product(
-                fsProduct.id(),
-                fsProduct.title(),
-                fsProduct.price(),
-                new Category(counter.incrementAndGet(), fsProduct.category()),
-                fsProduct.description(),
-                fsProduct.image()
-        );
+        return null;
     }
 
 

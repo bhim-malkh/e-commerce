@@ -1,8 +1,8 @@
 package com.scaler.productservice.controllers;
 
 import com.scaler.productservice.dtos.ExceptionDTO;
+import com.scaler.productservice.entity.Product;
 import com.scaler.productservice.exceptions.ProductNotFoundException;
-import com.scaler.productservice.models.Product;
 import com.scaler.productservice.services.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,14 +22,34 @@ public class ProductController {
         this.productService = productService;
     }
 
+    @GetMapping("/{id}")
+    public Product getProduct(@PathVariable("id") long id) throws ProductNotFoundException {
+        return productService.getProduct(id);
+    }
+
     @GetMapping()
     public List<Product> getAllProducts(){
         return productService.getAllProducts();
     }
 
-    @GetMapping("/{id}")
-    public Product getSingleProduct(@PathVariable("id") long id) throws ProductNotFoundException {
-        return productService.getSingleProduct(id);
+    @PostMapping
+    public Product addNewProduct(@RequestBody Product product) {
+        return null;
+    }
+
+    @PatchMapping("/{id}")
+    public Product updateExistingProduct(@PathVariable("id") Long id, @RequestBody Product product) {
+        return null;
+    }
+
+    @PutMapping("/{id}")
+    public Product replaceExistingProduct(@PathVariable("id") Long id, @RequestBody Product product){
+        return null;
+    }
+
+    @DeleteMapping("/{id}")
+    public Product deleteProduct(@PathVariable("id") Long id) {
+        return null;
     }
 
     @ExceptionHandler(ProductNotFoundException.class)
