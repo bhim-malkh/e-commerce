@@ -10,6 +10,6 @@ import java.util.Optional;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category,Long> {
 
-    public Optional<Category> findByIdAndIsActiveTrue(Long id);
-    public List<Category> findAllByIsActiveTrue();
+    Optional<Category> findByIdAndIsActiveTrue(Long id);
+    List<Category> findAllByIsActiveTrue();
 }

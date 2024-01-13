@@ -18,6 +18,8 @@ public class ExceptionHandlers {
 
     @ExceptionHandler(CategoryNotFoundException.class)
     public ResponseEntity<ExceptionDTO> handleCategoryNotFoundException(CategoryNotFoundException ex){
-        return new ResponseEntity<>(new ExceptionDTO(ex.getMessage(), "Check the category ID"),HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(
+                new ExceptionDTO(ex.getMessage(), "Check the category id"),
+                HttpStatus.NOT_FOUND);
     }
 }

@@ -20,12 +20,10 @@ import reactor.core.publisher.Mono;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class FakeStoreProductService implements IProductService {
     private final Log log = LogFactory.getLog(FakeStoreProductService.class);
-    private final AtomicLong counter = new AtomicLong();
     private final RestTemplate restTemplate;
 
     @Value(value = "${fakestore.endpoint}")

@@ -2,7 +2,6 @@ package com.scaler.productservice.services;
 
 import com.scaler.productservice.entity.Category;
 import com.scaler.productservice.exceptions.CategoryNotFoundException;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 

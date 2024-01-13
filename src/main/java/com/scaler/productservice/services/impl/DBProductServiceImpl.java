@@ -23,13 +23,13 @@ public class DBProductServiceImpl implements IProductService {
 
     @Override
     public Product getProduct(long id) throws ProductNotFoundException {
-        Optional<Product> product = productRepository.findById(id);
+        Optional<Product> product = productRepository.findByIdAndIsActiveTrue(id);
         return product.orElseThrow(() -> getProductNotFoundException(id));
     }
 
     @Override
     public List<Product> getAllProducts() {
-        return productRepository.findAll();
+        return productRepository.findAllByIsActiveTrue();
     }
 
     @Override
