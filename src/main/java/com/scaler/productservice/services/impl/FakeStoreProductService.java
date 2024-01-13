@@ -1,7 +1,6 @@
 package com.scaler.productservice.services.impl;
 
 import com.scaler.productservice.dtos.FakeStoreProductDTO;
-import com.scaler.productservice.entity.Category;
 import com.scaler.productservice.entity.Product;
 import com.scaler.productservice.exceptions.ProductNotFoundException;
 import com.scaler.productservice.services.IProductService;

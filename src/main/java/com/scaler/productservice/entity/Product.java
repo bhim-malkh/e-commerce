@@ -1,15 +1,13 @@
 package com.scaler.productservice.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
-@Table(name = "product")
-public class Product {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class Product extends BaseEntity{
     private String title;
     private Double price;
     private String description;
@@ -17,5 +15,4 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
     private String image_url;
-
 }

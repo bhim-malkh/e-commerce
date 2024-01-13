@@ -13,10 +13,10 @@ public interface IProductService {
 
     Product addNewProduct(Product product);
 
-    Product updateExistingProduct(Long id, Product product);
+    Product updateExistingProduct(Long id, Product product) throws ProductNotFoundException;
 
-    Product replaceExistingProduct(Long id,Product product);
+    Product replaceExistingProduct(Long id,Product product) throws ProductNotFoundException;
 
-    Product deleteProduct(Long id);
+    Product deleteProduct(Long id) throws ProductNotFoundException;
 
 }

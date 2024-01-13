@@ -1,6 +1,7 @@
 package com.scaler.productservice.controlleradvices;
 
 import com.scaler.productservice.dtos.ExceptionDTO;
+import com.scaler.productservice.exceptions.CategoryNotFoundException;
 import com.scaler.productservice.exceptions.ProductNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +16,8 @@ public class ExceptionHandlers {
         return new ResponseEntity<>(dto, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(ArithmeticException.class)
-    public ResponseEntity<ExceptionDTO> handleArithmeticException(ArithmeticException ex){
-        return new ResponseEntity<>(new ExceptionDTO(ex.getMessage(), ex.getMessage()),HttpStatus.BAD_REQUEST);
+    @ExceptionHandler(CategoryNotFoundException.class)
+    public ResponseEntity<ExceptionDTO> handleCategoryNotFoundException(CategoryNotFoundException ex){
+        return new ResponseEntity<>(new ExceptionDTO(ex.getMessage(), "Check the category ID"),HttpStatus.NOT_FOUND);
     }
 }

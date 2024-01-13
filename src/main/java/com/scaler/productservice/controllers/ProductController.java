@@ -5,6 +5,7 @@ import com.scaler.productservice.entity.Product;
 import com.scaler.productservice.exceptions.ProductNotFoundException;
 import com.scaler.productservice.services.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ public class ProductController {
     private final IProductService productService;
 
     @Autowired
-    public ProductController(IProductService productService){
+    public ProductController(@Qualifier("DBProductServiceImpl") IProductService productService){
         this.productService = productService;
     }
 
@@ -34,22 +35,22 @@ public class ProductController {
 
     @PostMapping
     public Product addNewProduct(@RequestBody Product product) {
-        return null;
+        return productService.addNewProduct(product);
     }
 
     @PatchMapping("/{id}")
-    public Product updateExistingProduct(@PathVariable("id") Long id, @RequestBody Product product) {
-        return null;
+    public Product updateExistingProduct(@PathVariable("id") Long id, @RequestBody Product product) throws ProductNotFoundException {
+        return productService.updateExistingProduct(id,product);
     }
 
     @PutMapping("/{id}")
-    public Product replaceExistingProduct(@PathVariable("id") Long id, @RequestBody Product product){
-        return null;
+    public Product replaceExistingProduct(@PathVariable("id") Long id, @RequestBody Product product) throws ProductNotFoundException {
+        return productService.replaceExistingProduct(id,product);
     }
 
     @DeleteMapping("/{id}")
-    public Product deleteProduct(@PathVariable("id") Long id) {
-        return null;
+    public Product deleteProduct(@PathVariable("id") Long id) throws ProductNotFoundException {
+        return productService.deleteProduct(id);
     }
 
     @ExceptionHandler(ProductNotFoundException.class)
